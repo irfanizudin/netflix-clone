@@ -12,6 +12,10 @@
 		2ECB7C62297A3E6800B26DFB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C61297A3E6800B26DFB /* MainTabBarViewController.swift */; };
 		2ECB7C67297A3E6900B26DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECB7C66297A3E6900B26DFB /* Assets.xcassets */; };
 		2ECB7C6A297A3E6900B26DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECB7C68297A3E6900B26DFB /* LaunchScreen.storyboard */; };
+		2ECB7C74297A424800B26DFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C73297A424800B26DFB /* HomeViewController.swift */; };
+		2ECB7C76297A426E00B26DFB /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C75297A426E00B26DFB /* UpcomingViewController.swift */; };
+		2ECB7C78297A428B00B26DFB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C77297A428B00B26DFB /* SearchViewController.swift */; };
+		2ECB7C7A297A42A400B26DFB /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C79297A42A400B26DFB /* DownloadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		2ECB7C66297A3E6900B26DFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2ECB7C69297A3E6900B26DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2ECB7C6B297A3E6900B26DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ECB7C73297A424800B26DFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2ECB7C75297A426E00B26DFB /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
+		2ECB7C77297A428B00B26DFB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2ECB7C79297A42A400B26DFB /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		2ECB7C5C297A3E6800B26DFB /* netflix-clone */ = {
 			isa = PBXGroup;
 			children = (
+				2ECB7C71297A41FC00B26DFB /* Controllers */,
 				2ECB7C5D297A3E6800B26DFB /* AppDelegate.swift */,
 				2ECB7C5F297A3E6800B26DFB /* SceneDelegate.swift */,
 				2ECB7C61297A3E6800B26DFB /* MainTabBarViewController.swift */,
@@ -62,6 +71,25 @@
 				2ECB7C6B297A3E6900B26DFB /* Info.plist */,
 			);
 			path = "netflix-clone";
+			sourceTree = "<group>";
+		};
+		2ECB7C71297A41FC00B26DFB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2ECB7C72297A420900B26DFB /* Core */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2ECB7C72297A420900B26DFB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2ECB7C73297A424800B26DFB /* HomeViewController.swift */,
+				2ECB7C75297A426E00B26DFB /* UpcomingViewController.swift */,
+				2ECB7C77297A428B00B26DFB /* SearchViewController.swift */,
+				2ECB7C79297A42A400B26DFB /* DownloadViewController.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ECB7C78297A428B00B26DFB /* SearchViewController.swift in Sources */,
 				2ECB7C62297A3E6800B26DFB /* MainTabBarViewController.swift in Sources */,
 				2ECB7C5E297A3E6800B26DFB /* AppDelegate.swift in Sources */,
+				2ECB7C7A297A42A400B26DFB /* DownloadViewController.swift in Sources */,
 				2ECB7C60297A3E6800B26DFB /* SceneDelegate.swift in Sources */,
+				2ECB7C76297A426E00B26DFB /* UpcomingViewController.swift in Sources */,
+				2ECB7C74297A424800B26DFB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
