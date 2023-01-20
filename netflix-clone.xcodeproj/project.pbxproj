@@ -72,7 +72,7 @@
 		2ECB7C5C297A3E6800B26DFB /* netflix-clone */ = {
 			isa = PBXGroup;
 			children = (
-				2ECB7C88297ADBAE00B26DFB /* Managers */,
+				2ECB7C88297ADBAE00B26DFB /* Ignores */,
 				2ECB7C7B297A764200B26DFB /* Views */,
 				2ECB7C71297A41FC00B26DFB /* Controllers */,
 				2ECB7C5D297A3E6800B26DFB /* AppDelegate.swift */,
@@ -113,14 +113,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2ECB7C88297ADBAE00B26DFB /* Managers */ = {
+		2ECB7C88297ADBAE00B26DFB /* Ignores */ = {
 			isa = PBXGroup;
 			children = (
 				2ECB7C89297ADBBC00B26DFB /* ignore.swift */,
 				2ECB7C8B297ADF6500B26DFB /* Ignore2.swift */,
 				2ECB7C8D297AE16E00B26DFB /* Ignore3.swift */,
 			);
-			path = Managers;
+			path = Ignores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
