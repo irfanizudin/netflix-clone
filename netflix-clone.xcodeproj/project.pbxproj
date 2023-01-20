@@ -19,6 +19,8 @@
 		2ECB7C7D297A766600B26DFB /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C7C297A766600B26DFB /* CollectionTableViewCell.swift */; };
 		2ECB7C7F297A7AC400B26DFB /* HeroHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C7E297A7AC400B26DFB /* HeroHeaderUIView.swift */; };
 		2ECB7C8A297ADBBC00B26DFB /* ignore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C89297ADBBC00B26DFB /* ignore.swift */; };
+		2ECB7C8C297ADF6500B26DFB /* Ignore2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C8B297ADF6500B26DFB /* Ignore2.swift */; };
+		2ECB7C8E297AE16E00B26DFB /* Ignore3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C8D297AE16E00B26DFB /* Ignore3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		2ECB7C7C297A766600B26DFB /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		2ECB7C7E297A7AC400B26DFB /* HeroHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderUIView.swift; sourceTree = "<group>"; };
 		2ECB7C89297ADBBC00B26DFB /* ignore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ignore.swift; sourceTree = "<group>"; };
+		2ECB7C8B297ADF6500B26DFB /* Ignore2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ignore2.swift; sourceTree = "<group>"; };
+		2ECB7C8D297AE16E00B26DFB /* Ignore3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ignore3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				2ECB7C89297ADBBC00B26DFB /* ignore.swift */,
+				2ECB7C8B297ADF6500B26DFB /* Ignore2.swift */,
+				2ECB7C8D297AE16E00B26DFB /* Ignore3.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -194,6 +200,8 @@
 				2ECB7C7A297A42A400B26DFB /* DownloadViewController.swift in Sources */,
 				2ECB7C60297A3E6800B26DFB /* SceneDelegate.swift in Sources */,
 				2ECB7C76297A426E00B26DFB /* UpcomingViewController.swift in Sources */,
+				2ECB7C8E297AE16E00B26DFB /* Ignore3.swift in Sources */,
+				2ECB7C8C297ADF6500B26DFB /* Ignore2.swift in Sources */,
 				2ECB7C8A297ADBBC00B26DFB /* ignore.swift in Sources */,
 				2ECB7C74297A424800B26DFB /* HomeViewController.swift in Sources */,
 				2ECB7C7D297A766600B26DFB /* CollectionTableViewCell.swift in Sources */,
