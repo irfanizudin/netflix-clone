@@ -39,25 +39,8 @@ class HomeViewController: UIViewController {
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
         homeFeedTableView.tableHeaderView = headerView
         
-//        getTrendingMovies()
+    }
         
-        APICaller.shared.getUpcomingMovies { result in
-            
-        }
-    }
-    
-    private func getTrendingMovies() {
-
-        APICaller.shared.getTrendingMovies { result in
-            switch result {
-            case .success(let movies):
-                print(movies)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     private func configureNavbar() {
         var image = UIImage(named: "netflixLogo")
         image = image?.withRenderingMode(.alwaysOriginal)
@@ -152,7 +135,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 25
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
