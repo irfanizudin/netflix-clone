@@ -7,6 +7,15 @@
 
 import UIKit
 
+
+enum Section: Int {
+    case trendingMovies = 0
+    case trendingTV = 1
+    case popularMovies = 2
+    case topRatedTV = 3
+    case upcomingMovies = 4
+}
+
 class HomeViewController: UIViewController {
 
     let sectionTitles: [String] = ["Trending Movies", "Trending TV", "Popular Movies", "Top Rated TV", "Upcoming Movies"]
@@ -83,6 +92,58 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
             return UITableViewCell()
         }
+        
+        switch indexPath.section {
+        case Section.trendingMovies.rawValue:
+            APICaller.shared.getTrendingMovies { result in
+                switch result {
+                case .success(let movies):
+                    cell.configureMovies(movies: movies)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Section.trendingTV.rawValue:
+            APICaller.shared.getTrendingTV { result in
+                switch result {
+                case.success(let movies):
+                    cell.configureMovies(movies: movies)
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Section.popularMovies.rawValue:
+            APICaller.shared.getPopularMovies { result in
+                switch result {
+                case.success(let movies):
+                    cell.configureMovies(movies: movies)
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Section.topRatedTV.rawValue:
+            APICaller.shared.getTopRatedTV { result in
+                switch result {
+                case.success(let movies):
+                    cell.configureMovies(movies: movies)
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Section.upcomingMovies.rawValue:
+            APICaller.shared.getUpcomingMovies { result in
+                switch result {
+                case.success(let movies):
+                    cell.configureMovies(movies: movies)
+                case.failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        default:
+            return UITableViewCell()
+            
+        }
+        
         return cell
     }
     
