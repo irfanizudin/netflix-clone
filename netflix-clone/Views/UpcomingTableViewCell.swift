@@ -69,7 +69,7 @@ class UpcomingTableViewCell: UITableViewCell {
     public func configureUpcomingMovie(movies: Movie) {
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movies.poster_path ?? "")") else { return }
         posterImageView.sd_setImage(with: url)
-        titleLabel.text = movies.title ?? movies.original_title
+        titleLabel.text = movies.title ?? movies.original_title ?? movies.name ?? movies.original_name
     }
     
     required init?(coder: NSCoder) {
