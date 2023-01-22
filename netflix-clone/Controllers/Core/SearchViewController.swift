@@ -37,6 +37,8 @@ class SearchViewController: UIViewController {
         searchTableView.dataSource = self
         navigationItem.searchController = searchController
         
+        searchController.searchResultsUpdater = self
+        
         fetchTopRatedTV()
     }
     
@@ -79,4 +81,29 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        
+        guard let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3,
+              let resultController = searchController.searchResultsController as? SearchResultViewController else { return }
+        
+        APICaller.shared.searchMovies(query: query) { result in
+            switch result {
+            case.success(let movies):
+                resultController.movies = movies
+                DispatchQueue.main.async {
+                    resultController.searchCollectionView.reloadData()
+                }
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
 }
