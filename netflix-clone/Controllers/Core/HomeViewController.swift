@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
         homeFeedTableView.tableHeaderView = headerView
         getRandomTrendingMovie()
-
+        
     }
     
     private func getRandomTrendingMovie() {
@@ -75,9 +75,6 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTableView.frame = view.bounds
-//        NSLayoutConstraint.activate([
-//            homeFeedTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
-//        ])
     }
 
 }

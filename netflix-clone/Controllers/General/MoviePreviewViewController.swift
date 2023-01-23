@@ -52,14 +52,14 @@ class MoviePreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Movie Preview"
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = false
         view.backgroundColor = .systemBackground
         view.addSubview(webPlayerUIView)
         webPlayerUIView.addSubview(webView)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(downloadButton)
-                
         webView.navigationDelegate = self
         applyConstraints()
     }
@@ -97,15 +97,13 @@ class MoviePreviewViewController: UIViewController {
     func configureMoviePreview(movie: Movie, videoElement: VideoElement) {
         titleLabel.text = movie.title ?? movie.original_title ?? movie.name ?? movie.original_name
         descriptionLabel.text = movie.overview
-        print(videoElement)
-        if let url = URL(string: "https://www.youtube.com/embed/\(videoElement.id?.videoId ?? "QQjLp1uvQb8")") {
-            print(url)
-            DispatchQueue.main.async { [weak self] in
-                self?.webView.load(URLRequest(url: url))
+            if let url = URL(string: "https://www.youtube.com/embed/\(videoElement.id?.videoId ?? "QQjLp1uvQb8")") {
+                DispatchQueue.main.async { [weak self] in
+                    self?.webView.load(URLRequest(url: url))
+                }
+            } else {
+                print("url nil")
             }
-        } else {
-            print("url nil")
-        }
     }
 }
 
