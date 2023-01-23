@@ -81,9 +81,29 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let movie = movies[indexPath.row]
+        guard let title = movie.title ?? movie.original_title ?? movie.name ?? movie.original_name else { return }
+        
+        APICaller.shared.getYoutubeVideo(query: title) { [weak self] result in
+            switch result {
+            case.success(let videoElement):
+                DispatchQueue.main.async {
+                    let vc = MoviePreviewViewController()
+                    vc.configureMoviePreview(movie: movie, videoElement: videoElement)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating, SearchResultViewControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
@@ -91,6 +111,8 @@ extension SearchViewController: UISearchResultsUpdating {
               !query.trimmingCharacters(in: .whitespaces).isEmpty,
               query.trimmingCharacters(in: .whitespaces).count >= 3,
               let resultController = searchController.searchResultsController as? SearchResultViewController else { return }
+        
+        resultController.delegate = self
         
         APICaller.shared.searchMovies(query: query) { result in
             switch result {
@@ -105,5 +127,14 @@ extension SearchViewController: UISearchResultsUpdating {
         }
     }
     
+    func searchResultViewControllerDidTap(movie: Movie, videoElement: VideoElement) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = MoviePreviewViewController()
+            vc.configureMoviePreview(movie: movie, videoElement: videoElement)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
     
 }
+

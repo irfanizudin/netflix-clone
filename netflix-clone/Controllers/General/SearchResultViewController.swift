@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol SearchResultViewControllerDelegate: AnyObject {
+    func searchResultViewControllerDidTap(movie: Movie, videoElement: VideoElement)
+}
+
 class SearchResultViewController: UIViewController {
 
+    weak var delegate: SearchResultViewControllerDelegate?
+    
     public var movies: [Movie] = []
     
     public let searchCollectionView: UICollectionView = {
@@ -50,5 +56,23 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let posterPath = movies[indexPath.row].poster_path
         cell.configurePoster(url: posterPath ?? "")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let movie = movies[indexPath.row]
+        guard let title = movie.title ?? movie.original_title ?? movie.name ?? movie.original_name else { return }
+
+        APICaller.shared.getYoutubeVideo(query: title) { [weak self] result in
+            switch result {
+            case.success(let videoElement):
+                self?.delegate?.searchResultViewControllerDidTap(movie: movie, videoElement: videoElement)
+                print("tappp")
+
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
