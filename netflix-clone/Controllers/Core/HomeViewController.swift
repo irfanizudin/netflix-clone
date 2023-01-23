@@ -76,6 +76,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
+        
         switch indexPath.section {
         case Section.trendingMovies.rawValue:
             APICaller.shared.getTrendingMovies { result in
@@ -153,5 +155,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
+    }
+}
+
+extension HomeViewController: CollectionTableViewCellDelegate {
+    func collectionTableViewCellDidTap(_ cell: CollectionTableViewCell, movie: Movie, videoElement: VideoElement) {
+        
+        DispatchQueue.main.async { [weak self] in
+            let vc = MoviePreviewViewController()
+            vc.configureMoviePreview(movie: movie, videoElement: videoElement)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 }

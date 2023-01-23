@@ -10,7 +10,9 @@ import Foundation
 
 struct Constants {
     static let API_KEY = APIKey.tmdbAPIKey
+    static let YoutubeAPI_KEY = APIKey.youtubeAPIKey
     static let baseURL = "https://api.themoviedb.org"
+    static let youtubeBaseURL = "https://youtube.googleapis.com/youtube/v3"
 }
 
 class APICaller {
@@ -111,6 +113,23 @@ class APICaller {
             do {
                 let results = try JSONDecoder().decode(MovieResponse.self, from: data)
                 completion(.success(results.results))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    func getYoutubeVideo(query: String, completion: @escaping(Result<VideoElement, Error>) -> ()) {
+        
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        guard let url = URL(string: "\(Constants.youtubeBaseURL)/search?q=\(query)&key=\(Constants.YoutubeAPI_KEY)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
+            guard let data = data, error == nil else { return }
+            do {
+                let results = try JSONDecoder().decode(YoutubeResponse.self, from: data)
+                completion(.success((results.items?.first ?? VideoElement(id: VideoID(videoId: "Di310WS8zLk")))))
             } catch {
                 completion(.failure(error))
             }
