@@ -18,11 +18,15 @@ enum Section: Int {
 
 class HomeViewController: UIViewController {
 
+    private var randomTrendingMovie: Movie?
+    private var headerView: HeroHeaderUIView?
+    
     let sectionTitles: [String] = ["Trending Movies", "Trending TV", "Popular Movies", "Top Rated TV", "Upcoming Movies"]
     
     private let homeFeedTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -35,10 +39,23 @@ class HomeViewController: UIViewController {
         homeFeedTableView.dataSource = self
         
         configureNavbar()
-        
-        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
+
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
         homeFeedTableView.tableHeaderView = headerView
-        
+        getRandomTrendingMovie()
+
+    }
+    
+    private func getRandomTrendingMovie() {
+        APICaller.shared.getTrendingMovies { [weak self] result in
+            switch result {
+            case.success(let movies):
+                self?.randomTrendingMovie = movies.randomElement()
+                self?.headerView?.configureHeaderImage(posterPath: self?.randomTrendingMovie?.poster_path ?? "/9xkGlFRqrN8btTLU0KQvOfn2PHr.jpg")
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
         
     private func configureNavbar() {
@@ -52,11 +69,15 @@ class HomeViewController: UIViewController {
         ]
         
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.backgroundColor = .clear
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTableView.frame = view.bounds
+//        NSLayoutConstraint.activate([
+//            homeFeedTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
+//        ])
     }
 
 }
@@ -152,9 +173,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let defaultOffset = view.safeAreaInsets.top
-        let offset = scrollView.contentOffset.y + defaultOffset
-        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
+//        let defaultOffset = view.safeAreaInsets.top
+//        let offset = scrollView.contentOffset.y + defaultOffset
+//        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }
 
