@@ -39,7 +39,9 @@ class MoviePreviewViewController: UIViewController {
     }()
     
     private var webView: WKWebView = {
-        let webView = WKWebView()
+        let config = WKWebViewConfiguration()
+        config.allowsInlineMediaPlayback = true
+        let webView = WKWebView(frame: .zero, configuration: config)
         return webView
     }()
     
@@ -105,6 +107,19 @@ class MoviePreviewViewController: UIViewController {
                 print("url nil")
             }
     }
+    
+    func configureMovieDownloadPreview(movie: MovieEntity, videoElement: VideoElement) {
+        titleLabel.text = movie.title ?? movie.original_title ?? movie.name ?? movie.original_name
+        descriptionLabel.text = movie.overview
+            if let url = URL(string: "https://www.youtube.com/embed/\(videoElement.id?.videoId ?? "QQjLp1uvQb8")") {
+                DispatchQueue.main.async { [weak self] in
+                    self?.webView.load(URLRequest(url: url))
+                }
+            } else {
+                print("url nil")
+            }
+    }
+
 }
 
 extension MoviePreviewViewController: WKNavigationDelegate {

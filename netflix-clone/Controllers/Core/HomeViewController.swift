@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     private let homeFeedTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -37,7 +38,6 @@ class HomeViewController: UIViewController {
         view.addSubview(homeFeedTableView)
         homeFeedTableView.delegate = self
         homeFeedTableView.dataSource = self
-        
         configureNavbar()
 
         headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))

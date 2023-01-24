@@ -60,11 +60,11 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
+        print("tapp from search result")
         let movie = movies[indexPath.row]
-        guard let title = movie.title ?? movie.original_title ?? movie.name ?? movie.original_name else { return }
+        guard let title = movie.name ?? movie.original_name ?? movie.title ?? movie.original_title  else { return }
 
-        APICaller.shared.getYoutubeVideo(query: title) { [weak self] result in
+        APICaller.shared.getYoutubeVideo(query: "\(title) trailer") { [weak self] result in
             switch result {
             case.success(let videoElement):
                 self?.delegate?.searchResultViewControllerDidTap(movie: movie, videoElement: videoElement)

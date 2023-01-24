@@ -84,10 +84,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print("tapp from search view")
         let movie = movies[indexPath.row]
         guard let title = movie.title ?? movie.original_title ?? movie.name ?? movie.original_name else { return }
         
-        APICaller.shared.getYoutubeVideo(query: title) { [weak self] result in
+        APICaller.shared.getYoutubeVideo(query: "\(title) trailer") { [weak self] result in
             switch result {
             case.success(let videoElement):
                 DispatchQueue.main.async {
@@ -103,7 +104,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating, SearchResultViewControllerDelegate {
+extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
@@ -127,6 +128,9 @@ extension SearchViewController: UISearchResultsUpdating, SearchResultViewControl
         }
     }
     
+}
+
+extension SearchViewController: SearchResultViewControllerDelegate {
     func searchResultViewControllerDidTap(movie: Movie, videoElement: VideoElement) {
         DispatchQueue.main.async { [weak self] in
             let vc = MoviePreviewViewController()
@@ -135,6 +139,4 @@ extension SearchViewController: UISearchResultsUpdating, SearchResultViewControl
         }
     }
 
-    
 }
-

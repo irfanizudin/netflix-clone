@@ -72,6 +72,13 @@ class UpcomingTableViewCell: UITableViewCell {
         titleLabel.text = movies.title ?? movies.original_title ?? movies.name ?? movies.original_name
     }
     
+    public func configureDownloadMovie(movies: MovieEntity) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movies.poster_path ?? "")") else { return }
+        posterImageView.sd_setImage(with: url)
+        titleLabel.text = movies.title ?? movies.original_title ?? movies.name ?? movies.original_name
+    }
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

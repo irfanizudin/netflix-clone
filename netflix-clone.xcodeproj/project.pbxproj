@@ -15,6 +15,8 @@
 		2E427CF6297BF90A00555203 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2E427CF5297BF90A00555203 /* SDWebImage */; };
 		2E427CF8297BF90A00555203 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2E427CF7297BF90A00555203 /* SDWebImageMapKit */; };
 		2E427CFA297C0D8400555203 /* UpcomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E427CF9297C0D8400555203 /* UpcomingTableViewCell.swift */; };
+		2EBD7703297FFE33000595F5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD7702297FFE33000595F5 /* CoreDataManager.swift */; };
+		2EBD7706297FFF7A000595F5 /* MovieModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD7704297FFF7A000595F5 /* MovieModel.xcdatamodeld */; };
 		2ECB7C5E297A3E6800B26DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C5D297A3E6800B26DFB /* AppDelegate.swift */; };
 		2ECB7C60297A3E6800B26DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C5F297A3E6800B26DFB /* SceneDelegate.swift */; };
 		2ECB7C62297A3E6800B26DFB /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7C61297A3E6800B26DFB /* MainTabBarViewController.swift */; };
@@ -37,6 +39,8 @@
 		2E427CF0297B977400555203 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		2E427CF2297BB4A400555203 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E427CF9297C0D8400555203 /* UpcomingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTableViewCell.swift; sourceTree = "<group>"; };
+		2EBD7702297FFE33000595F5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2EBD7705297FFF7A000595F5 /* MovieModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieModel.xcdatamodel; sourceTree = "<group>"; };
 		2ECB7C5A297A3E6800B26DFB /* netflix-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "netflix-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECB7C5D297A3E6800B26DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ECB7C5F297A3E6800B26DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				2ECB7C66297A3E6900B26DFB /* Assets.xcassets */,
 				2ECB7C68297A3E6900B26DFB /* LaunchScreen.storyboard */,
 				2ECB7C6B297A3E6900B26DFB /* Info.plist */,
+				2EBD7704297FFF7A000595F5 /* MovieModel.xcdatamodeld */,
 			);
 			path = "netflix-clone";
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			children = (
 				2ECB7C96297AF0E100B26DFB /* APICaller.swift */,
 				2ECB7C98297AF10B00B26DFB /* APIKey.swift */,
+				2EBD7702297FFE33000595F5 /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				2E427CF3297BB4A400555203 /* MovieCollectionViewCell.swift in Sources */,
 				2ECB7C62297A3E6800B26DFB /* MainTabBarViewController.swift in Sources */,
 				2E427CFA297C0D8400555203 /* UpcomingTableViewCell.swift in Sources */,
+				2EBD7703297FFE33000595F5 /* CoreDataManager.swift in Sources */,
 				2E427CF1297B977400555203 /* Movie.swift in Sources */,
 				2E3F483D297D59D5000CDB26 /* Youtube.swift in Sources */,
 				2ECB7C5E297A3E6800B26DFB /* AppDelegate.swift in Sources */,
@@ -247,6 +254,7 @@
 				2ECB7C7F297A7AC400B26DFB /* HeroHeaderUIView.swift in Sources */,
 				2ECB7C7A297A42A400B26DFB /* DownloadViewController.swift in Sources */,
 				2E3F483F297D60E1000CDB26 /* MoviePreviewViewController.swift in Sources */,
+				2EBD7706297FFF7A000595F5 /* MovieModel.xcdatamodeld in Sources */,
 				2ECB7C99297AF10B00B26DFB /* APIKey.swift in Sources */,
 				2ECB7C60297A3E6800B26DFB /* SceneDelegate.swift in Sources */,
 				2ECB7C76297A426E00B26DFB /* UpcomingViewController.swift in Sources */,
@@ -493,6 +501,19 @@
 			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2EBD7704297FFF7A000595F5 /* MovieModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2EBD7705297FFF7A000595F5 /* MovieModel.xcdatamodel */,
+			);
+			currentVersion = 2EBD7705297FFF7A000595F5 /* MovieModel.xcdatamodel */;
+			path = MovieModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2ECB7C52297A3E6800B26DFB /* Project object */;
 }

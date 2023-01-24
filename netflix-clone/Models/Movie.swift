@@ -13,7 +13,7 @@ struct MovieResponse: Codable {
 
 struct Movie: Codable {
     let id: Int?
-    let genre_ids: [Int]?
+//    let genre_ids: [Int]?
     let backdrop_path: String?
     let original_title: String?
     let overview: String?

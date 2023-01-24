@@ -53,6 +53,18 @@ class CollectionTableViewCell: UITableViewCell {
         }
     }
     
+    private func downloadMovie(indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        CoreDataManager.shared.downloadMovie(movie: movie) { result in
+            switch result {
+            case.success(()):
+                print("Download success")
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     
 }
 
@@ -89,5 +101,15 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                 print(error.localizedDescription)
             }
         }
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(actionProvider:  { _ in
+            let downloadAction = UIAction(title: "Download") { [weak self] _ in
+                self?.downloadMovie(indexPath: indexPath)
+            }
+            return UIMenu(children: [downloadAction])
+        })
+        return config
     }
 }
