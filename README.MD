@@ -37,16 +37,12 @@ Swift Package Manager is used as a dependency manager. List of dependecies:
 
 - To run this app properly, you will need an API key from TMDB API and YouTube API.
 - After obtaining the API key, follow these steps:
-
   1. Create a Swift file named "APIKey.swift" in the "Managers" folder.
-
   2. Add the following code and replace "YOUR_TMDB_API_KEY" and "YOUR_YOUTUBE_API_KEY" with your respective API keys:
-
      ```
      struct APIKey {
          static let tmdbAPIKey = "YOUR_TMDB_API_KEY"
          static let youtubeAPIKey = "YOUR_YOUTUBE_API_KEY"
      }
      ```
-
   3. The app is now ready to be run.
